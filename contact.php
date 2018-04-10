@@ -10,11 +10,10 @@ require_once('config/email_config.php');
 $template = new Template('templates/modules/contact-form.php');
 
 //Assign variables
-$template->heading = 'This the template heading';
+$template->title = "Contact Form";
 
 //Display template
 echo $template;
-
 
 // try {
 //     //Recipients
