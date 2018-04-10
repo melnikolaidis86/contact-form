@@ -3,6 +3,7 @@
 define('EMAIL_HOST', 'mail.melnikolaidis.eu');
 define('EMAIL_USERNAME', 'info@melnikolaidis.eu');
 define('EMAIL_PASSWORD', '!GVTqR%MqjA{');
+define('EMAIL_RECIPIENT', 'melnikolaidis86@gmail.com');
 
 // Import PHPMailer classes into the global namespace
 // These must be at the top of your script, not inside a function
