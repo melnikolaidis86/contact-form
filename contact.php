@@ -12,10 +12,12 @@ $template->title = "Contact Form";
 //Display template
 echo $template;
 
-$form_validation = new Validation('field', 'username', ['required']);
+$field = '';
+
+$form_validation = new Validation($field, 'username', array('required' => true));
 
 $form_validation->validate();
 
+print_r($form_validation->errors);
 
 
- 
