@@ -3,11 +3,12 @@
 session_start();
 
 //Requiring configuration file
-require_once('config/config.php');
+require_once(__DIR__ . '/config/config.php');
 
 //Autoloading classes from library
 spl_autoload_register(function($className) {
-    include 'libraries/' . $className . '.php';
+    
+    include __DIR__ . '/libraries/' . $className . '.php';
 });
 
 //Requiring vendor files
