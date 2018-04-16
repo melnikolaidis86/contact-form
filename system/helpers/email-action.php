@@ -1,10 +1,10 @@
 <?php 
 
 //Requiring main initiliasation file to load all required files and libraries
-require_once('../system/init.php'); 
+require_once('../init.php'); 
 
 //Require email configuration
-require_once('../system/config/email_config.php');
+require_once('../config/email_config.php');
 
 //Email Functionality
 if(isset($_POST['submit'])) {
@@ -21,8 +21,8 @@ if(isset($_POST['submit'])) {
     $form_errors = array();
 
     //Running Validation for each of the form fields
-    $first_name_validation = new Validation($first_name, 'όνομα', array('required' => true, 'maxLength' => 20));
-    $last_name_validation = new Validation($last_name, 'επώνυμο', array('required' => true, 'maxLength' => 20));
+    $first_name_validation = new Validation($first_name, 'όνομα', array('required' => true, 'maxLength' => 30));
+    $last_name_validation = new Validation($last_name, 'επώνυμο', array('required' => true, 'maxLength' => 30));
     $email_validation = new Validation($email, 'e-mail', array('required' => true, 'validateEmail' => true));
     $phone_validation = new Validation($phone, 'τηλέφωνο', array('customRegex' => '/^[0-9]{3}-[0-9]{7}$/'));
     $subject_validation = new Validation($subject, 'θέμα', array('required' => true, 'maxLength' => 30));

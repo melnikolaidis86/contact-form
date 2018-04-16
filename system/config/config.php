@@ -1,4 +1,4 @@
 <?php
 //Application URI
-define('BASE_URI', 'http://localhost/custom-cms/application/');
+define('BASE_URI', 'http://localhost/custom-cms/');
 
