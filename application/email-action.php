@@ -1,10 +1,10 @@
 <?php 
 
 //Requiring main initiliasation file to load all required files and libraries
-require_once('../init.php'); 
+require_once('../system/init.php'); 
 
 //Require email configuration
-require_once('../config/email_config.php');
+require_once('../system/config/email_config.php');
 
 //Email Functionality
 if(isset($_POST['submit'])) {
@@ -24,7 +24,7 @@ if(isset($_POST['submit'])) {
     $first_name_validation = new Validation($first_name, 'όνομα', array('required' => true, 'maxLength' => 30));
     $last_name_validation = new Validation($last_name, 'επώνυμο', array('required' => true, 'maxLength' => 30));
     $email_validation = new Validation($email, 'e-mail', array('required' => true, 'validateEmail' => true));
-    $phone_validation = new Validation($phone, 'τηλέφωνο', array('customRegex' => '/^[0-9]{3}-[0-9]{7}$/'));
+    $phone_validation = new Validation($phone, 'τηλέφωνο', array('customRegex' => '/^\d{3}\d{7}$/'));
     $subject_validation = new Validation($subject, 'θέμα', array('required' => true, 'maxLength' => 30));
     $text_area_validation = new Validation($text_area, 'κείμενο', array('required' => true));
 
@@ -63,17 +63,23 @@ if(isset($_POST['submit'])) {
             //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
         
             $mail->send();
-            echo 'Message has been sent';
+            $_SESSION['email_msg_success'] = 'Το μηνυμά σας στάλθηκε επιτυχώς. Θα έρθουμε σύντομα σε επικοινωνία μαζί σας...';
+            unset($_SESSION['form_errors']);
             } catch (Exception $e) {
-                echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+                $_SESSION['email_msg_fail'] = 'Υπήρξε κάποιο πρόβλημα με την αποστολή του μηνύματός σας. Παρακαλούμε προσπαθήστε ξανά...' . $mail->ErrorInfo;
+                unset($_SESSION['form_errors']);
         }
 
     } else {
 
-        echo '<pre>';
-            print_r($form_errors);
-        echo '</pre>';
+        $_SESSION['form_errors'] = $form_errors;
+        unset($_SESSION['email_msg_success']); 
+        unset($_SESSION['email_msg_fail']);
+
     }
+
+    header('Location: ' . BASE_URI . 'application/contact.php');
+    die();
 
 }
  

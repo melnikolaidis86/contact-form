@@ -14,7 +14,7 @@ use PHPMailer\PHPMailer\Exception;
 $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 
 // Server settings
-$mail->SMTPDebug = 4;                                 // Enable verbose debug output
+$mail->SMTPDebug = 2;                                 // Enable verbose debug output
 $mail->isSMTP();                                      // Set mailer to use SMTP
 $mail->Host = EMAIL_HOST;  // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                               // Enable SMTP authentication
