@@ -6,6 +6,7 @@ require_once('../system/init.php');
 //Require email configuration
 require_once('../system/config/email_config.php');
 
+
 //Email Functionality
 if(isset($_POST['submit'])) {
 
@@ -39,7 +40,7 @@ if(isset($_POST['submit'])) {
         array_push($form_errors, $email_validation->getError());
     }
     if($phone_validation->getError()){
-        array_push($form_errors, $phone_validation->getError() . '(xxx-xxxxxxx)');
+        array_push($form_errors, $phone_validation->getError());
     }
     if($subject_validation->getError()) {
         array_push($form_errors, $subject_validation->getError());
@@ -55,19 +56,38 @@ if(isset($_POST['submit'])) {
             //Recipients
             $mail->setFrom($email, $first_name . ' ' . $last_name);
             $mail->addAddress(EMAIL_RECIPIENT);  // Add a recipient
-        
+
             //Content
             $mail->isHTML(true);  // Set email format to HTML
             $mail->Subject = $subject;
-            $mail->Body    = $text_area;
-            //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+            //Get template and assign variables
+            $template = new Template('templates/email/default-email.php');
+
+            //Assign variables
+            $template->full_name = $first_name . ' ' .$last_name;
+            $template->message = $text_area;
+
+            //Opening outbuffering stream to load html template for the e-mail body
+            ob_start();
+
+            echo $template;
+
+            $mail->Body = ob_get_contents();
+
+            ob_clean();
+
+            //Alternative messafe for clients that don't accept html e-mail
+            $mail->AltBody = $text_area;
         
             $mail->send();
             $_SESSION['email_msg_success'] = 'Το μηνυμά σας στάλθηκε επιτυχώς. Θα έρθουμε σύντομα σε επικοινωνία μαζί σας...';
             unset($_SESSION['form_errors']);
+            unset($_SESSION['email_msg_fail']);
             } catch (Exception $e) {
                 $_SESSION['email_msg_fail'] = 'Υπήρξε κάποιο πρόβλημα με την αποστολή του μηνύματός σας. Παρακαλούμε προσπαθήστε ξανά...' . $mail->ErrorInfo;
                 unset($_SESSION['form_errors']);
+                unset($_SESSION['email_msg_success']);
         }
 
     } else {

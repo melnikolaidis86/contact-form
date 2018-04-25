@@ -81,7 +81,9 @@ class Validation {
     //A method to check if the current field is a valid address
     private function validate_email() {
 
-        return filter_var($this->field, FILTER_VALIDATE_EMAIL);
+        $filtered_field = filter_var($this->field, FILTER_SANITIZE_EMAIL); //First removing any illegal chars from the field
+
+        return filter_var($filtered_field, FILTER_VALIDATE_EMAIL);
     }
 
     //A method to run a custom regex validation test
