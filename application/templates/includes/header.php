@@ -9,9 +9,9 @@
     <title><?php echo $title; ?></title>
 
     <!-- Include the CSS -->
-    <link href="<?php echo BASE_URI ?>application/assets/css/toolkit.css" rel="stylesheet">
+    <link href="<?php echo BASE_URI ?>assets/css/toolkit.css" rel="stylesheet">
 
-    <link href="<?php echo BASE_URI ?>application/assets/css/application.css" rel="stylesheet">
+    <link href="<?php echo BASE_URI ?>assets/css/application.css" rel="stylesheet">
 
   </head>
   <body>

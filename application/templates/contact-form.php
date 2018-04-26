@@ -102,7 +102,7 @@
 </div>
 
 <!-- script for js validation -->
-<script src="<?php echo BASE_URI ?>application/assets/js/validation.js"></script>
+<script src="<?php echo BASE_URI ?>assets/js/validation.js"></script>
 
 <?php include('./includes/footer.php'); ?>
 
