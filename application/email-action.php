@@ -39,9 +39,6 @@ if(isset($_POST['submit'])) {
     if($email_validation->getError()) {
         array_push($form_errors, $email_validation->getError());
     }
-    if($phone_validation->getError()){
-        array_push($form_errors, $phone_validation->getError());
-    }
     if($subject_validation->getError()) {
         array_push($form_errors, $subject_validation->getError());
     }
@@ -82,19 +79,18 @@ if(isset($_POST['submit'])) {
         
             $mail->send();
             $_SESSION['email_msg_success'] = 'Το μηνυμά σας στάλθηκε επιτυχώς. Θα έρθουμε σύντομα σε επικοινωνία μαζί σας...';
-            unset($_SESSION['form_errors']);
-            unset($_SESSION['email_msg_fail']);
+            
             } catch (Exception $e) {
                 $_SESSION['email_msg_fail'] = 'Υπήρξε κάποιο πρόβλημα με την αποστολή του μηνύματός σας. Παρακαλούμε προσπαθήστε ξανά...' . $mail->ErrorInfo;
-                unset($_SESSION['form_errors']);
-                unset($_SESSION['email_msg_success']);
         }
 
     } else {
 
         $_SESSION['form_errors'] = $form_errors;
-        unset($_SESSION['email_msg_success']); 
-        unset($_SESSION['email_msg_fail']);
+
+        if($phone_validation->getError()){
+            array_push($_SESSION['form_errors'], $phone_validation->getError());
+        }
 
     }
 

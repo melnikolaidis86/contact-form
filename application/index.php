@@ -7,7 +7,8 @@ require_once('../system/init.php');
 $template = new Template('templates/front-page.php');
 
 //Assign variables
-$template->title = "Home Page";
+$template->title = "ΑΡΧΙΚΗ";
+$template->active_page = "homepage";
 
 //Display template
 echo $template;

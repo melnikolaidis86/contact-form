@@ -7,7 +7,8 @@ require_once('../system/init.php');
 $template = new Template('templates/contact-form.php');
 
 //Assign variables
-$template->title = "Contact Form";
+$template->title = "ΕΠΙΚΟΙΝΩΝΙΑ";
+$template->active_page = "contact";
 
 //Display template
 echo $template;

@@ -38,7 +38,7 @@
     <!-- The form template -->
     <div class="row">
         <div class="col-md-10 col-lg-8 offset-md-1 offset-lg-2">
-            <h4 class="text-center text-uppercase text-muted mb-3">Επικοινωνια</h4>
+            <h4 class="text-center text-uppercase text-muted mb-3"><?php echo $title; ?></h4>
             <h5 class="mb-3">Αν θέλετε αν συνεισφέρετε σε αυτή μας την προσπάθεια συμπληρώστε την παρακάτω φόρμα.</h5>
             <form id="form" method="post" action="<?php echo BASE_URI; ?>application/email-action.php">
                 <div class="form-group">
@@ -103,6 +103,9 @@
 
 <!-- script for js validation -->
 <script src="<?php echo BASE_URI ?>assets/js/validation.js"></script>
+
+<!-- Destroy session when the page reloads -->
+<?php session_destroy(); ?>
 
 <?php include('./includes/footer.php'); ?>
 
