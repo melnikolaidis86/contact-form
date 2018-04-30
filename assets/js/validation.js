@@ -16,7 +16,7 @@ firstNameField.addEventListener('blur', function() {
         required: true,
         minLength: 5,
         maxLength: 30,
-        regex: /^[a-zA-Zα-ωΑ-Ω\s]*$/ // accepts only String Characters english and greek
+        regex: /^[A-Za-zΑ-Ωα-ωίϊΐΪόάέύϋΰΫήώΪ]+$/ // accepts only String Characters english and greek/^[A-Za-zΑ-Ωα-ωίϊΐόάέύϋΰήώ]+$/
     });
     
     errorSpan.innerHTML = firstNameValidation.validate();
@@ -31,7 +31,7 @@ lastNameField.addEventListener('blur', function() {
         required: true,
         minLength: 5,
         maxLength: 30,
-        regex: /^[a-zA-Zα-ωΑ-Ω\s]*$/ // accepts only String Characters english and greek
+        regex: /^[A-Za-zΑ-Ωα-ωίϊΐΪόάέύϋΰΫήώΪ]+$/ // accepts only String Characters english and greek
     });
     
     errorSpan.innerHTML = lastNameValidation.validate();

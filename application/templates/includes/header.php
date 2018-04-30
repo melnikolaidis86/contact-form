@@ -38,7 +38,7 @@
   <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item <?php if($active_page == 'homepage') echo 'active'; ?>">
-        <a class="nav-link text-uppercase" href="index.html">Αρχικη <span class="sr-only">(current)</span></a>
+        <a class="nav-link text-uppercase" href="<?php echo BASE_URI ?>application/index.php">Αρχικη <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item <?php if($active_page == 'contact') echo 'active'; ?>">
         <a class="nav-link text-uppercase" href="<?php echo BASE_URI ?>application/contact.php">Επικοινωνια</a>
