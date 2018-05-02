@@ -8,7 +8,7 @@ require_once(__DIR__ . '/config/config.php');
 //Autoloading classes from library
 spl_autoload_register(function($className) {
     
-    include __DIR__ . '/libraries/' . $className . '.php';
+    include __DIR__ . '/libraries/src/' . $className . '.php';
 });
 
 //Requiring vendor files
