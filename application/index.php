@@ -1,7 +1,10 @@
 <?php 
 
 //Requiring main initiliasation file to load all required files and libraries
-require_once('../system/init.php'); 
+require_once('../system/init.php');
+
+//Requiring appopriate model for current page
+require_once('../system/models/Post.php');
 
 //Get template and assign variables
 $template = new Template('templates/front-page.php');

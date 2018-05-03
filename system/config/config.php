@@ -1,4 +1,11 @@
 <?php
-//Application URI
-define('BASE_URI', 'http://localhost/custom-cms/');
 
+//Define database connection variabels as constants
+define('DB_DRIVER', 'mysql'); //used for pdo dsn
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'custom-cms');
+define('DB_USER', 'root');
+define('DB_PASSWORD', '');
+
+//Application URI
+define('BASE_URI', 'http://' . $_SERVER['SERVER_NAME'] . '/custom-cms/');
