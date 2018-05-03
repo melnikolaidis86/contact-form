@@ -10,6 +10,7 @@ spl_autoload_register(function($className) {
 
 //Loading helper scripts
 require_once (__DIR__ . '/helpers/' . 'format_helper.php');
+require_once (__DIR__ . '/helpers/' . 'system_helper.php');
 
 //Requiring configuration file
 require_once(__DIR__ . '/config/config.php');
