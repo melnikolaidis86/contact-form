@@ -43,6 +43,11 @@
       <li class="nav-item <?php if($active_page == 'contact') echo 'active'; ?>">
         <a class="nav-link text-uppercase" href="<?php echo BASE_URI ?>application/contact.php">Επικοινωνια</a>
       </li>
+      <li class="nav-item hidden-md-up">
+        <form class="form-inline hidden-sm-up">
+          <input class="form-control" type="text" data-action="grow" placeholder="Αναζήτηση...">
+        </form>
+      </li>
 
       <!-- This will be added later with login functionality
       <li class="nav-item hidden-md-up">
@@ -57,9 +62,11 @@
 
     </ul>
 
-    <form class="form-inline float-right hidden-sm-down">
-      <input class="form-control" type="text" data-action="grow" placeholder="Αναζήτηση...">
-    </form>
+    <ul class="nav navbar-nav float-right mr-0 hidden-sm-down">
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="modal" data-target="#searchModal">Αναζήτηση</a>
+      </li>
+    </ul>
 
     <!-- Will be added later if the application uses avatar img
     <ul id="#js-popoverContent" class="nav navbar-nav float-right mr-0 hidden-sm-down">
@@ -77,4 +84,41 @@
     </ul>
   </div>
   -->
+
 </nav>
+
+
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Αναζήτηση</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+
+      <div class="modal-body p-0">
+        <div class="modal-body-scroller">
+          <ul class="media-list media-list-users list-group" id="search-list">
+            <li class="list-group-item">
+              <div class="media w-100">
+                <div class="media-body">
+                  <form class="form-inline">
+                    <input class="form-control w-100" type="text" data-action="grow" placeholder="Πληκτρολογείστε μία λέξη κλειδί..">
+                  </form>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="media w-100">
+                <div class="media-body">
+                  <strong>Dave Gamache</strong>
+                  <p>@dhg - Palo Alto</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
