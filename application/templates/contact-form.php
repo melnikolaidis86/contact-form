@@ -3,29 +3,13 @@
 <div class="mt-5" style="background-color: #F8F8F8">
     <div class="container">
 
-    <!-- div to display the success message if the e-mail was send successfully -->
-    <?php if(isset($_SESSION['email_msg_success'])) : ?>
+    <!-- div to display the error message and the error message type -->
+    <?php if(isset($_SESSION['message'])) : ?>
     <div class="row">
         <div class="col-md-10 col-lg-8 offset-md-1 offset-lg-2">
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="alert alert-<?php echo $_SESSION['message_type']; ?> alert-dismissible fade show" role="alert">
 
-                    <?php echo $_SESSION['email_msg_success']; ?>
-
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        </div>
-    </div>
-    <?php endif; ?>
-
-    <!-- div to display the error message if something went wrong during the email send method -->
-    <?php if(isset($_SESSION['email_msg_fail'])) : ?>
-    <div class="row">
-        <div class="col-md-10 col-lg-8 offset-md-1 offset-lg-2">
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-
-                    <?php echo $_SESSION['email_msg_fail']; ?>
+                    <?php echo $_SESSION['message']; ?>
 
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>

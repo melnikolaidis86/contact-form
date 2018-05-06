@@ -87,6 +87,20 @@
 
 </nav>
 
+<!-- Adding the search functionality -->
+
+<?php 
+
+//Calling a connection with database through the mysliClient
+$mysqli = (new MySQLiClient(DB_HOST, DB_NAME, DB_USER, DB_PASSWORD))->connect();
+
+//Fetching results based on the search query
+$posts = $mysqli->select("SELECT * FROM posts
+                                   INNER JOIN categories ON posts.category_id = categories.id
+                                   WHERE categories.category_name LIKE '%news%'")->get();
+
+?>
+
 
 <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
   <div class="modal-dialog">
@@ -109,12 +123,15 @@
               </div>
             </li>
             <li class="list-group-item">
+              <?php foreach ($posts as $post) : ?>
               <div class="media w-100">
                 <div class="media-body">
-                  <strong>Dave Gamache</strong>
-                  <p>@dhg - Palo Alto</p>
+                  <strong><?php echo $post->post_title; ?></strong>
+                  <p>@ <?php echo $post->category_name; ?></p>
+                  <hr>
                 </div>
               </div>
+              <?php endforeach; ?>
             </li>
           </ul>
         </div>

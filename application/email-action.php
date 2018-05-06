@@ -78,10 +78,12 @@ if(isset($_POST['submit'])) {
             $mail->AltBody = $text_area;
         
             $mail->send();
-            $_SESSION['email_msg_success'] = 'Το μηνυμά σας στάλθηκε επιτυχώς. Θα έρθουμε σύντομα σε επικοινωνία μαζί σας...';
+            $email_msg = 'Το μηνυμά σας στάλθηκε επιτυχώς. Θα έρθουμε σύντομα σε επικοινωνία μαζί σας...';
+            $email_msg_type = 'success';
             
             } catch (Exception $e) {
-                $_SESSION['email_msg_fail'] = 'Υπήρξε κάποιο πρόβλημα με την αποστολή του μηνύματός σας. Παρακαλούμε προσπαθήστε ξανά...' . $mail->ErrorInfo;
+                $email_msg = 'Υπήρξε κάποιο πρόβλημα με την αποστολή του μηνύματός σας. Παρακαλούμε προσπαθήστε ξανά...' . $mail->ErrorInfo;
+                $email_msg_type = 'danger';
         }
 
     } else {
@@ -94,8 +96,7 @@ if(isset($_POST['submit'])) {
 
     }
 
-    header('Location: ' . BASE_URI . 'application/contact.php');
-    die();
+    redirect(BASE_URI . 'application/contact.php', $email_msg, $email_msg_type);
 
 }
  

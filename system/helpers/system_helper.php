@@ -11,7 +11,7 @@
 
         //Check for message
         if($message != null) {
-            //Set eessage
+            //Set message
             $_SESSION['message'] = $message;
         }
 
