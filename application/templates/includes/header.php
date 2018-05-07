@@ -87,21 +87,6 @@
 
 </nav>
 
-<!-- Adding the search functionality -->
-
-<?php 
-
-//Calling a connection with database through the mysliClient
-$mysqli = (new MySQLiClient(DB_HOST, DB_NAME, DB_USER, DB_PASSWORD))->connect();
-
-//Fetching results based on the search query
-$posts = $mysqli->select("SELECT * FROM posts
-                                   INNER JOIN categories ON posts.category_id = categories.id
-                                   WHERE categories.category_name LIKE '%news%'")->get();
-
-?>
-
-
 <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -112,26 +97,24 @@ $posts = $mysqli->select("SELECT * FROM posts
 
       <div class="modal-body p-0">
         <div class="modal-body-scroller">
-          <ul class="media-list media-list-users list-group" id="search-list">
+          <ul class="media-list media-list-users list-group">
             <li class="list-group-item">
               <div class="media w-100">
                 <div class="media-body">
-                  <form class="form-inline">
-                    <input class="form-control w-100" type="text" data-action="grow" placeholder="Πληκτρολογείστε μία λέξη κλειδί..">
+                  <form class="form-inline" id="search-form" method="POST" action="<?php echo BASE_URI ?>application/search.php">
+                    <input id="search-query" name="search" class="form-control w-100" type="text" placeholder="Πληκτρολογείστε μία λέξη κλειδί..">
                   </form>
                 </div>
               </div>
             </li>
             <li class="list-group-item">
-              <?php foreach ($posts as $post) : ?>
               <div class="media w-100">
                 <div class="media-body">
-                  <strong><?php echo $post->post_title; ?></strong>
-                  <p>@ <?php echo $post->category_name; ?></p>
+                  <strong id="search-title">Δεν υπάρχουν αποτελέσματα...</strong>
+                  <p id="search-category"></p>
                   <hr>
                 </div>
               </div>
-              <?php endforeach; ?>
             </li>
           </ul>
         </div>
