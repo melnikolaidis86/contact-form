@@ -8,6 +8,9 @@
 
     <title><?php echo $title; ?></title>
 
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+
     <!-- Include the CSS -->
     <link href="<?php echo BASE_URI ?>assets/css/toolkit.css" rel="stylesheet">
 
@@ -64,7 +67,10 @@
 
     <ul class="nav navbar-nav float-right mr-0 hidden-sm-down">
       <li class="nav-item">
-        <a class="nav-link" data-toggle="modal" data-target="#searchModal">Αναζήτηση</a>
+        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#searchModal">
+          <span class="icon icon-magnifying-glass"></span>
+            Αναζήτηση
+        </button>
       </li>
     </ul>
 
@@ -87,6 +93,8 @@
 
 </nav>
 
+<!-- Searh Modal -->
+
 <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -97,26 +105,19 @@
 
       <div class="modal-body p-0">
         <div class="modal-body-scroller">
-          <ul class="media-list media-list-users list-group">
-            <li class="list-group-item">
+        <ul class="media-list media-list-users list-group">
+          <li class="list-group-item">
               <div class="media w-100">
-                <div class="media-body">
+              <div class="media-body">
                   <form class="form-inline" id="search-form" method="POST" action="<?php echo BASE_URI ?>application/search.php">
-                    <input id="search-query" name="search" class="form-control w-100" type="text" placeholder="Πληκτρολογείστε μία λέξη κλειδί..">
+                  <input id="search-query" name="search" class="form-control w-100" type="text" placeholder="Πληκτρολογείστε μία λέξη κλειδί..">
                   </form>
-                </div>
               </div>
-            </li>
-            <li class="list-group-item">
-              <div class="media w-100">
-                <div class="media-body">
-                  <strong id="search-title">Δεν υπάρχουν αποτελέσματα...</strong>
-                  <p id="search-category"></p>
-                  <hr>
-                </div>
               </div>
-            </li>
-          </ul>
+          </li>
+        </ul>
+        <ul class="media-list media-list-users list-group" id="search-result">
+        </ul>
         </div>
       </div>
     </div>

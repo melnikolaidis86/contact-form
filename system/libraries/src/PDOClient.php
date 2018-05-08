@@ -1,11 +1,12 @@
 <?php
 
-
+//PDOClient class extending the Database class
 class PDOClient extends Database
 {
     protected $dsn;
     protected $options;
     
+    //Construct method setting dsn and connection params
     public function __construct($driver, $host, $db_name, $db_user, $db_password)
     {
         parent::__construct($host, $db_name, $db_user, $db_password);
@@ -16,6 +17,8 @@ class PDOClient extends Database
         );
     }
     
+
+    //Connection Method
     public function connect()
     {
         try{
@@ -26,16 +29,19 @@ class PDOClient extends Database
         return $this;
     }
 
+    //Method to return the query as an object without prepared statement
     public function get()
     {
         return $this->statement->fetchAll(PDO::FETCH_OBJ);
     }
 
+    //Method to prepare a stament
     public function query($sql)
     {
         $this->statement = $this->_handler->prepare($sql);
     }
 
+    //Custom method to bind the type of a param
     public function bind($param, $value, $type = null) 
     {
         if(is_null($type)) {
@@ -55,33 +61,40 @@ class PDOClient extends Database
         }
     }
 
+    //Execute the statement
     public function execute() 
     {
         return $this->statement->execute();
     }
 
+    //Method to return the total row of a table as an object
     public function resultset() 
     {
         $this->execute();
         return $this->statement->fetchAll(PDO::FETCH_OBJ);
     }
 
+    //Method to return a single row as an object
     public function single()
     {
         $this->execute();
         return $this->statement->fetch(PDO::FETCH_OBJ);
     }
 
+    //Method to return the total length of a row
     public function rowCount()
     {
         return $this->statement->rowCount();
     }
 
+    //Method to return the last inserted ID for transaction purposes
     public function lastInsertId()
     {
         return $this->_handler->lastInsertId();
     }
 
+
+    //Transaction methods
     public function beginTransaction()
     {
         return $this->_handler->beginTransaction();
