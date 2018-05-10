@@ -14,23 +14,26 @@ mysqli_set_charset($mysqli_connection, "utf8");
 if(isset($_POST['search'])) {
 
     //Fetching results based on the search query looking up for posts per category
-    $posts_per_category = $mysqli->select("SELECT *  FROM posts
+    $posts_per_category = $mysqli->select("SELECT posts.post_id, posts.post_title, posts.created_date, categories.category_name FROM posts
                                         INNER JOIN categories ON posts.category_id = categories.id
-                                        WHERE categories.category_name LIKE '%" . $_POST['search'] . "%'")->get();
+                                        WHERE categories.category_name LIKE '%{$_POST['search']}%'
+                                        ORDER BY posts.created_date DESC")->get();
 
     //Fetching results based on the search query looking up for posts per tag
-    $posts_per_tag = $mysqli->select("SELECT posts.post_id, posts.post_title FROM posts
+    $posts_per_tag = $mysqli->select("SELECT posts.post_id, posts.post_title, posts.created_date, tags.tag_name FROM posts
                                         LEFT JOIN post_tags ON post_tags.post_id = posts.post_id
-                                        LEFT JOIN tags ON tags.tag_id = post_tags.tag_id")->get();
+                                        LEFT JOIN tags ON tags.tag_id = post_tags.tag_id
+                                        WHERE tags.tag_name LIKE '%{$_POST['search']}%'
+                                        ORDER BY posts.created_date DESC")->get();
 
-    var_dump($posts_per_tag);
 }
 
 ?>
+    <!-- Fetching the results from the search and display them in list items -->
 
-    <?php if(isset($posts_per_category)) : ?>
+    <?php if(isset($posts_per_category) || isset($posts_per_tag)) : ?>
 
-        <?php if($posts_per_category) : ?>
+        <?php if($posts_per_category || $posts_per_tag) : ?>
 
             <?php foreach($posts_per_category as $post_per_category) : ?>
 
@@ -38,8 +41,20 @@ if(isset($_POST['search'])) {
                 <div class="media w-100">
                         <div class="media-body">
                             <strong id="search-title"><?php echo $post_per_category->post_title; ?></strong>
-                            <p id="search-category">@ <?php echo $post_per_category->category_name; ?></p>
-                        <hr>
+                            <p id="search-category"><strong>Κατηγορία:</strong> <?php echo $post_per_category->category_name; ?></p>
+                    </div>
+                </div>
+            </li>
+
+            <?php endforeach; ?>
+
+            <?php foreach($posts_per_tag as $post_per_tag) : ?>
+
+            <li class="list-group-item">
+                <div class="media w-100">
+                        <div class="media-body">
+                            <strong id="search-title"><?php echo $post_per_tag->post_title; ?></strong>
+                            <p id="search-category"><strong>Ετικέτα:</strong> <?php echo $post_per_tag->tag_name; ?></p>
                     </div>
                 </div>
             </li>
@@ -52,7 +67,6 @@ if(isset($_POST['search'])) {
                 <div class="media w-100">
                     <div class="media-body">
                         <strong id="search-title">Δεν βρέθηκαν αποτελέσματα...</strong>
-                        <hr>
                     </div>
                 </div>
             </li>
