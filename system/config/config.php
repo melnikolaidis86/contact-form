@@ -6,6 +6,7 @@ define('DB_HOST', 'localhost');
 define('DB_NAME', 'custom-cms');
 define('DB_USER', 'root');
 define('DB_PASSWORD', '');
+define('DB_ENCODE', 'UTF8');
 
 //Application URI
 define('BASE_URI', 'http://' . $_SERVER['SERVER_NAME'] . '/custom-cms/');

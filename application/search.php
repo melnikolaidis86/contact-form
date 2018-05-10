@@ -8,7 +8,7 @@ $mysqli = (new MySQLiClient(DB_HOST, DB_NAME, DB_USER, DB_PASSWORD))->connect();
 
 //Setting charset to UTF8 through the connection with the database
 $mysqli_connection = $mysqli->getConnection();
-mysqli_set_charset($mysqli_connection, "utf8");
+mysqli_set_charset($mysqli_connection, DB_ENCODE);
 
 //Getting the search query
 if(isset($_POST['search'])) {

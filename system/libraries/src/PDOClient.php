@@ -7,13 +7,13 @@ class PDOClient extends Database
     protected $options;
     
     //Construct method setting dsn and connection params
-    public function __construct($driver, $host, $db_name, $db_user, $db_password)
+    public function __construct($driver, $host, $db_name, $db_user, $db_password, $db_encoding)
     {
         parent::__construct($host, $db_name, $db_user, $db_password);
-        $this->dsn = "{$driver}:host={$this->host};dbname={$this->db_name}";
+        $this->dsn = "{$driver}:host={$this->host};dbname={$this->db_name};charset={$db_encoding}";
         $this->options = array(
             PDO::ATTR_PERSISTENT => true,
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         );
     }
     
