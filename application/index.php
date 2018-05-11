@@ -15,10 +15,14 @@ $template = new Template('templates/front-page.php');
 //Assign variables
 $template->title = "ΑΡΧΙΚΗ";
 $template->active_page = "homepage";
+$template->categories = get_all_categories();
 $template->posts = $post->get_all_posts();
-$template->category = $post->get_the_category(1);
-$template->tags = $post->get_the_tags(2);
-$template->post = $post->get_the_post(2);
+$template->latest_post = $post->get_the_latest_post();
+
+//Variables to display the latest of two categories
+$template->latest_post_first_category = $post->get_the_latest_post(1);
+$template->latest_post_second_category = $post->get_the_latest_post(2);
+
 
 //Display template
 echo $template;

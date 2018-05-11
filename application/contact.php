@@ -9,6 +9,7 @@ $template = new Template('templates/contact-form.php');
 //Assign variables
 $template->title = "ΕΠΙΚΟΙΝΩΝΙΑ";
 $template->active_page = "contact";
+$template->categories = get_all_categories();
 
 //Display template
 echo $template;

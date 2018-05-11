@@ -3,10 +3,16 @@
 <div class="mt-5" style="background-color: #F8F8F8">
     <div class="container">
 
+    <div class="row">
+        <div class="col-md-12">
+            <h5 class="text-center text-muted mb-5"><?php echo $title; ?></h5>            
+        </div>
+    </div>
+
     <!-- div to display the error message and the error message type -->
     <?php if(isset($_SESSION['message'])) : ?>
     <div class="row">
-        <div class="col-md-10 col-lg-8 offset-md-1 offset-lg-2">
+        <div class="col-md-12">
             <div class="alert alert-<?php echo $_SESSION['message_type']; ?> alert-dismissible fade show" role="alert">
 
                     <?php echo $_SESSION['message']; ?>
@@ -21,9 +27,8 @@
 
     <!-- The form template -->
     <div class="row">
-        <div class="col-md-10 col-lg-8 offset-md-1 offset-lg-2">
-            <h4 class="text-center text-uppercase text-muted mb-3"><?php echo $title; ?></h4>
-            <h5 class="mb-3">Αν θέλετε να έρθετε σε επικοινωνία μαζί μας. Παρακαλούμε, συμπληρώστε την παρακάτω φόρμα.</h5>
+        <div class="col-md-8">
+        <p class="lead mb-5">Αν θέλετε να έρθετε σε επικοινωνία μαζί μας. Παρακαλούμε, συμπληρώστε την παρακάτω φόρμα.</p>
             <form id="form" method="post" action="<?php echo BASE_URI; ?>application/email-action.php">
                 <div class="form-group">
                     <label for="firstName">Όνομα *</label>
@@ -61,12 +66,15 @@
                 <button type="submit" name="submit" class="d-block mx-auto btn btn-primary">Αποστολή</button>
             </form>
         </div>
+
+        <?php include('./includes/sidebar.php'); ?>
+
     </div>
 
     <!-- div to display the error messages during back-end validation procedure -->
     <?php if(isset($_SESSION['form_errors'])) : ?>    
     <div class="row">
-        <div class="col-md-10 col-lg-8 offset-md-1 offset-lg-2 mt-3">
+        <div class="col-md-12 mt-3">
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <h6 class="alert-danger">Παρακαλούμε διορθώστε τα λάθη που παρουσιάστηκαν κατά της συμπλήρωση της φόρμας, παρακάτω:</h6>
                 <hr>
