@@ -3,7 +3,7 @@
     //Format Date
     function formatDate($date) {
 
-        return date("F j, Y, g:i a", strtotime($date));
+        return date("j F, Y, g:i a", strtotime($date));
     }
 
     //URL Format

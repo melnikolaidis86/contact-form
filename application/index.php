@@ -16,8 +16,8 @@ $template = new Template('templates/front-page.php');
 $template->title = "ΑΡΧΙΚΗ";
 $template->active_page = "homepage";
 $template->categories = get_all_categories();
-$template->posts = $post->get_all_posts();
 $template->latest_post = $post->get_the_latest_post();
+$template->posts = $post->get_all_posts(2);
 
 //Variables to display the latest of two categories
 $template->latest_post_first_category = $post->get_the_latest_post(1);

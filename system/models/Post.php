@@ -17,6 +17,8 @@ class Post
     public function get_all_posts($posts_limit = 5) {
 
         $posts = $this->db->select("SELECT * FROM posts
+                            INNER JOIN users ON users.user_id = posts.author_id
+                            INNER JOIN categories ON categories.id = posts.category_id
                             ORDER BY posts.created_date DESC
                             LIMIT {$posts_limit}")->get();
 
@@ -27,6 +29,8 @@ class Post
     public function get_the_post($post_id) {
 
         $this->db->query("SELECT * FROM posts
+                            INNER JOIN users ON users.user_id = posts.author_id
+                            INNER JOIN categories ON categories.id = posts.category_id
                             WHERE posts.post_id = {$post_id}");
 
         $post = $this->db->single();
@@ -34,17 +38,7 @@ class Post
         return $post;
     }
 
-    //A method to fetch the category of the post
-    public function get_the_category($post_id) {
 
-        $this->db->query("SELECT categories.*, posts.post_id, posts.category_id FROM categories
-                            INNER JOIN posts ON categories.id = posts.category_id
-                            WHERE posts.post_id = {$post_id}");
-
-        $category = $this->db->single();
-
-        return $category;
-    }
 
     //A method to fetch the tags of the post
     public function get_the_tags($post_id) {
