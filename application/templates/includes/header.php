@@ -18,6 +18,12 @@
 
   </head>
 
+<?php if(isset($no_navigation)) : ?>
+
+  <body>
+
+<?php else: ?>
+
   <body class="with-top-navbar">
 
   <div class="growl" id="app-growl"></div>
@@ -123,3 +129,5 @@
     </div>
   </div>
 </div>
+
+<?php endif; ?>
