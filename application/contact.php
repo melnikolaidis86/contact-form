@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 //Requiring main initiliasation file to load all required files and libraries
 require_once('../system/init.php'); 

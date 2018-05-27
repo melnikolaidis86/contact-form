@@ -56,9 +56,11 @@ class PDOClient extends Database
                     $type = PDO::PARAM_NULL;
                     break;
                 default :
-                    $type = PDO::STRING;
+                    $type = PDO::PARAM_STR;
             }
         }
+
+        return $this->statement->bindParam($param, $value, $type);
     }
 
     //Execute the statement

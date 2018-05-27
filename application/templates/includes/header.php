@@ -9,7 +9,7 @@
     <title><?php echo $title; ?></title>
 
     <!-- Custom Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'> -->
 
     <!-- Include the CSS -->
     <link href="<?php echo BASE_URI ?>assets/css/toolkit.css" rel="stylesheet">
@@ -21,6 +21,8 @@
 <?php if(isset($no_navigation)) : ?>
 
   <body>
+
+  <div>
 
 <?php else: ?>
 

@@ -96,8 +96,11 @@
 <!-- script for js validation -->
 <script src="<?php echo BASE_URI ?>assets/js/validation.js"></script>
 
-<!-- Destroy session when the page reloads -->
-<?php session_destroy(); ?>
+<!-- Unset session when the page reloads -->
+<?php
+    if(isset($_SESSION['message'])) session_unset($_SESSION['message']);
+    if(isset($_SESSION['form_errors'])) session_unset($_SESSION['form_errors']);
+?>
 
 <?php include('./includes/footer.php'); ?>
 

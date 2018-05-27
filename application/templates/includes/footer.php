@@ -5,5 +5,6 @@
     <script src="<?php echo BASE_URI ?>assets/js/application.js"></script>
     <script src="<?php echo BASE_URI ?>assets/js/live-search.js"></script>
 
+    </div>
   </body>
 </html>
