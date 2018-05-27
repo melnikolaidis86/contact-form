@@ -22,14 +22,13 @@ class User
 
     public function authenticate_user($username, $password) {
 
-        $this->db->query("SELECT * FROM users
+        $this->db->query("SELECT users.username, users.email, users.password FROM users
                             WHERE (users.username = '{$username}' OR users.email = '{$username}')
-                            AND users.password = '{$password}'
                             LIMIT 1");
 
         $user = $this->db->single();
 
-        if($user) {
+        if(password_verify($password, $user->password)) {
 
             return true;
         } else {

@@ -34,7 +34,7 @@
 
         <div class="mb-5">
             <button class="btn btn-primary" type="submit" name="log_in">Log In</button>
-            <a class="btn btn-secondary">Sign up</a>
+            <a href="<?php echo BASE_URI ?>application/register.php" class="btn btn-secondary">Sign up</a>
         </div>
 
         <footer class="screen-login">

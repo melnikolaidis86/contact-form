@@ -2,6 +2,22 @@
 
 <div class="mt-5" style="background-color: #F8F8F8">
 
+<!-- div to display form errros -->
+<?php if(isset($_SESSION['form_errors'])) : ?>
+
+    <?php foreach($_SESSION['form_errors'] as $form_error) : ?>
+        <div class="alert alert-danger ?> alert-dismissible fade show" role="alert">
+
+                <?php echo $form_error; ?>
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endforeach; ?>
+
+<?php endif; ?>
+
 <div class="container-fluid container-fill-height">
     <div class="container-content-middle">
 
