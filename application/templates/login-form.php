@@ -5,7 +5,7 @@
 <!-- div to display the error message and the error message type -->
 <?php if(isset($_SESSION['message'])) : ?>
 
-<div class="alert alert-<?php echo $_SESSION['message_type']; ?> alert-dismissible fade show" role="alert">
+<div class="alert alert-<?php echo $_SESSION['message_type']; ?> alert-dismissible fade show text-center" role="alert">
 
         <?php echo $_SESSION['message']; ?>
 
@@ -25,20 +25,20 @@
         </a>
 
         <div class="form-group">
-            <input class="form-control" name="username" placeholder="Username">
+            <input class="form-control" name="username" placeholder="Όνομα χρήστη">
         </div>
 
         <div class="form-group mb-3">
-            <input type="password" name="password" class="form-control" placeholder="Password">
+            <input type="password" name="password" class="form-control" placeholder="Κωδικός Πρόσβασης">
         </div>
 
         <div class="mb-5">
-            <button class="btn btn-primary" type="submit" name="log_in">Log In</button>
-            <a href="<?php echo BASE_URI ?>application/register.php" class="btn btn-secondary">Sign up</a>
+            <button class="btn btn-primary" type="submit" name="log_in">Είσοδος</button>
+            <a href="<?php echo BASE_URI ?>application/register.php" class="btn btn-secondary">Εγγραφή νέου χρήστη</a>
         </div>
 
         <footer class="screen-login">
-            <a href="#" class="text-muted">Forgot password</a>
+            <a href="<?php echo BASE_URI ?>application/recover.php" class="text-muted">Ξέχασα τον κωδικό πρόσβασης</a>
         </footer>
         </form>
     

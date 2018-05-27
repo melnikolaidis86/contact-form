@@ -6,7 +6,6 @@ require_once('../system/init.php');
 //Require email configuration
 require_once('../system/config/email_config.php');
 
-
 //Email Functionality
 if(isset($_POST['submit'])) {
 

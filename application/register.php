@@ -58,6 +58,8 @@ if(isset($_POST['register'])) {
 
         $user->register_user($first_name, $last_name, $username, $email, password_hash($password, PASSWORD_DEFAULT));
 
+        redirect(BASE_URI . 'application/login.php', 'Ευχαριστούμε για την εγγραφή σας', 'success');
+
     } else {
 
         $_SESSION['form_errors'] = $form_errors;
@@ -69,5 +71,18 @@ if(isset($_POST['register'])) {
 //Display template
 echo $template;
 
-//Clearing Session errors
-if(isset($_SESSION['form_errors'])) session_unset($_SESSION['form_errors']);
+//Unsetting session
+if(isset($_SESSION['form-errors'])) {
+
+    session_unset($_SESSION['form_errors']);
+}
+
+if(isset($_SESSION['message'])) {
+
+    session_unset($_SESSION['message']);
+}
+
+if(isset($_SESSION['message_type'])) {
+
+    session_unset($_SESSION['message_type']);
+}

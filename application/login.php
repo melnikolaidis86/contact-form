@@ -29,7 +29,7 @@ if(isset($_POST['log_in'])) {
         redirect(BASE_URI . 'application/admin.php');
     } else {
 
-        redirect(BASE_URI . 'application/login.php', 'Invalid Log in', 'danger');
+        redirect(BASE_URI . 'application/login.php', 'Τα στοιχεία που δώσατε δν αντιστοιχούν σε κάποιο εγγραμμένο χρήστη.', 'danger');
 
     }
     
@@ -38,8 +38,16 @@ if(isset($_POST['log_in'])) {
 //Display template
 echo $template;
 
-//Unsettion message session during invalid log in
-session_unset($_SESSION['message']);
+//Unsetting session
+if(isset($_SESSION['message'])) {
+
+    session_unset($_SESSION['message']);
+}
+
+if(isset($_SESSION['message_type'])) {
+
+    session_unset($_SESSION['message_type']);
+}
 
 
 

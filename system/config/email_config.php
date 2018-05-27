@@ -14,7 +14,7 @@ use PHPMailer\PHPMailer\Exception;
 $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 
 // Server settings
-$mail->SMTPDebug = 2;                                 // Enable verbose debug output
+$mail->SMTPDebug = 0;                                 // Enable verbose debug output
 $mail->isSMTP();                                      // Set mailer to use SMTP
 $mail->Host = EMAIL_HOST;  // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -22,3 +22,4 @@ $mail->Username = EMAIL_USERNAME;                 // SMTP username
 $mail->Password = EMAIL_PASSWORD;                          // SMTP password
 $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 $mail->Port = 587;                                    // TCP port to connect to
+$mail->CharSet = 'UTF-8';                         // UTF-8 Encoding

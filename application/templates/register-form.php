@@ -6,7 +6,7 @@
 <?php if(isset($_SESSION['form_errors'])) : ?>
 
     <?php foreach($_SESSION['form_errors'] as $form_error) : ?>
-        <div class="alert alert-danger ?> alert-dismissible fade show" role="alert">
+        <div class="alert alert-danger ?> alert-dismissible fade show text-center" role="alert">
 
                 <?php echo $form_error; ?>
 
@@ -28,35 +28,35 @@
         </a>
 
         <div class="form-group">
-            <input type="text" class="form-control" name="first_name" placeholder="First Name">
+            <input type="text" class="form-control" name="first_name" placeholder="Όνομα">
         </div>
 
         <div class="form-group">
-            <input type="text" class="form-control" name="last_name" placeholder="Last Name">
+            <input type="text" class="form-control" name="last_name" placeholder="Επώνυμο">
         </div>
 
         <div class="form-group">
-            <input type="text" class="form-control" name="username" placeholder="Username">
+            <input type="text" class="form-control" name="username" placeholder="Όνομα χρήστη">
         </div>
 
         <div class="form-group">
-            <input type="email" class="form-control" name="email" placeholder="Email">
+            <input type="email" class="form-control" name="email" placeholder="E-mail">
         </div>
 
         <div class="form-group mb-3">
-            <input type="password" name="password" class="form-control" placeholder="Password">
+            <input type="password" name="password" class="form-control" placeholder="Κωδικός Πρόσβασης">
         </div>
 
         <div class="form-group mb-3">
-            <input type="password" name="password_confirm" class="form-control" placeholder="Confirm Password">
+            <input type="password" name="password_confirm" class="form-control" placeholder="Επιβεβαίωση Κωδικού πρόσβασης">
         </div>
 
         <div class="mb-5">
-            <button class="btn btn-primary" type="submit" name="register">Sign up</button>
+            <button class="btn btn-primary" type="submit" name="register">Εγγραφή</button>
         </div>
 
         <footer class="screen-login">
-            <p>If you are already a member go back</p><a href="#" class="text-muted"> Log in</a>
+            <p>Είμαι ήδη μέλος. Πίσω στην</p><a href="<?php echo BASE_URI ?>application/login.php" class="text-muted">Είσοδο</a>
         </footer>
 
         </form>

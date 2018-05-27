@@ -40,14 +40,63 @@ class User
 
     public function register_user($first_name, $last_name, $username, $email, $password) {
 
-        $this->db->query("INSERT INTO users (users.username, password, email, first_name, last_name)
-                            VALUES (:username, :password, :email, :first_name, :last_name)");
+        $this->db->query("INSERT INTO users (username, password, email, first_name, last_name, recovery_hash)
+                            VALUES (:username, :password, :email, :first_name, :last_name, :recovery_hash)");
 
         $this->db->bind(':username', $username);
         $this->db->bind(':password', $password);
         $this->db->bind(':email', $email);
         $this->db->bind(':first_name', $first_name);
         $this->db->bind(':last_name', $last_name);
+        $this->db->bind(':recovery_hash', 0);
+
+        $this->db->execute();
+    }
+
+    public function check_if_valid_user_email($email) {
+
+        $this->db->query("SELECT users.email FROM users
+                            WHERE users.email = '{$email}'
+                            LIMIT 1");
+
+        $user = $this->db->single();
+
+        return $user;
+    }
+
+    public function register_recovery_hash($user_email, $recovery_hash) {
+
+        $this->db->query("UPDATE users 
+                            SET users.recovery_hash = :recovery_hash
+                            WHERE users.email = :user_email");
+
+        $this->db->bind(':user_email', $user_email);
+        $this->db->bind(':recovery_hash', $recovery_hash);
+
+        $this->db->execute();
+    }
+
+    public function get_user($recovery_hash) {
+
+        $this->db->query("SELECT users.recovery_hash, users.user_id, users.password FROM users
+                            WHERE users.recovery_hash = '{$recovery_hash}'
+                            LIMIT 1");
+
+
+        $user = $this->db->single();
+
+        return $user;
+    }
+
+    public function update_password($user_id, $password) {
+
+        $this->db->query("UPDATE users
+                            SET users.password = :password, users.recovery_hash = :recovery_hash
+                            WHERE users.user_id = :user_id");
+
+        $this->db->bind(':user_id', $user_id);
+        $this->db->bind(':password', $password);
+        $this->db->bind(':recovery_hash', 0);
 
         $this->db->execute();
     }
