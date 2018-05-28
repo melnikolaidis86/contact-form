@@ -5,6 +5,12 @@
     <script src="<?php echo BASE_URI ?>assets/js/application.js"></script>
     <script src="<?php echo BASE_URI ?>assets/js/live-search.js"></script>
 
+    <!-- scripts for js validation -->
+    <script src="<?php echo BASE_URI ?>assets/js/Validation.js"></script>
+    <script src="<?php echo BASE_URI ?>assets/js/contactFormValidation.js"></script>
+    <script src="<?php echo BASE_URI ?>assets/js/registerFormValidation.js"></script>
+
+
     </div>
   </body>
 </html>

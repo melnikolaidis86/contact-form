@@ -21,7 +21,7 @@
 <div class="container-fluid container-fill-height">
     <div class="container-content-middle">
 
-        <form role="form" method="POST" action="<?php echo BASE_URI ?>application/register.php" class="mx-auto text-center app-login-form">
+        <form role="form" id="registerForm" method="POST" action="<?php echo BASE_URI ?>application/register.php" class="mx-auto text-center app-login-form">
 
         <a href="<?php echo BASE_URI ?>application/index.php" class="app-brand mb-5">
             <img src="<?php echo BASE_URI ?>assets/img/logo.png" alt="OakPine">
@@ -29,26 +29,33 @@
 
         <div class="form-group">
             <input type="text" class="form-control" name="first_name" placeholder="Όνομα">
+            <small id="firstNameRegister" class="form-text text-danger"></small>
         </div>
 
         <div class="form-group">
             <input type="text" class="form-control" name="last_name" placeholder="Επώνυμο">
+            <small id="lastNameRegister" class="form-text text-danger"></small>
         </div>
 
         <div class="form-group">
             <input type="text" class="form-control" name="username" placeholder="Όνομα χρήστη">
+            <small id="usernameRegister" class="form-text text-danger"></small>
         </div>
 
         <div class="form-group">
             <input type="email" class="form-control" name="email" placeholder="E-mail">
+            <small id="emailRegister" class="form-text text-danger"></small>
         </div>
 
         <div class="form-group mb-3">
             <input type="password" name="password" class="form-control" placeholder="Κωδικός Πρόσβασης">
+            <small id="passwordRegister" class="form-text text-danger"></small>
+            <small id="passwordRegisterStrength" class="form-text text-warning"></small>
         </div>
 
         <div class="form-group mb-3">
             <input type="password" name="password_confirm" class="form-control" placeholder="Επιβεβαίωση Κωδικού πρόσβασης">
+            <small id="passwordConfirmRegister" class="form-text text-danger"></small>
         </div>
 
         <div class="mb-5">

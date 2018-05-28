@@ -93,9 +93,6 @@
     </div>
 </div>
 
-<!-- script for js validation -->
-<script src="<?php echo BASE_URI ?>assets/js/validation.js"></script>
-
 <!-- Unset session when the page reloads -->
 <?php
     if(isset($_SESSION['message'])) session_unset($_SESSION['message']);
